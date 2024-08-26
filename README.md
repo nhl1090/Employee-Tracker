@@ -42,7 +42,7 @@ The Employee Tracker is a command-line application designed for business owners 
 ![Screenshot](./images/image.png)
 
 Video walkthrough:
-
+https://drive.google.com/file/d/1lyvZtfrZ_smznPP71vuGa2fo8UmV5BkX/view?usp=drive_link
 
 
 ## License
