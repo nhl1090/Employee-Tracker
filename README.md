@@ -15,7 +15,7 @@ The Employee Tracker is a command-line application designed for business owners 
 
 ## Installation
 1. Install PostgressSQL (https://www.postgresql.org/download/)
-2. Navigate to the SVG-Logo-Maker repository (https://github.com/nhl1090/Employee-Tracker)
+2. Navigate to the Employee Tracker repository (https://github.com/nhl1090/Employee-Tracker)
 3. Open Bash
 4. Navigate to the folder where you would like to clone the repo
 5. Use the following command to clone the repo to your local: 'git clone https://github.com/nhl1090/Employee-Tracker.git'
@@ -35,7 +35,7 @@ The Employee Tracker is a command-line application designed for business owners 
 
 9. Add your DB credentials
 10. Use the following command to run the application `node index.js`
-11. Answer the questions and create your new SQL employee tracker!
+11. Answer the questions to view and edit your SQL employee tracker!
 
 
 ## Usage
