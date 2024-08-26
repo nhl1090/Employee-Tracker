@@ -34,11 +34,11 @@ The Employee Tracker is a command-line application designed for business owners 
     DB_DATABASE=your_db_name
 
 9. Add your DB credentials
-10. Answer the questions and create your new SQL employee tracker!
+10. Use the following command to run the application `node index.js`
+11. Answer the questions and create your new SQL employee tracker!
 
 
 ## Usage
-
 
 ## License
 This project is licensed under the [MIT license](https://opensource.org/license/MIT).
