@@ -2,56 +2,59 @@ const inquirer = require('inquirer');
 const db = require('./db'); // Import functions from db.js
 
 async function mainMenu() {
-  try {
-    const { action } = await inquirer.prompt([
-      {
-        type: 'list',
-        name: 'action',
-        message: 'What would you like to do?',
-        choices: [
-          'View all departments',
-          'View all roles',
-          'View all employees',
-          'Add a department',
-          'Add a role',
-          'Add an employee',
-          'Update an employee role',
-          'Exit',
-        ],
-      },
-    ]);
+  let exit = false; // Add a control flag for the loop
 
-    switch (action) {
-      case 'View all departments':
-        await viewAllDepartments();
-        break;
-      case 'View all roles':
-        await viewAllRoles();
-        break;
-      case 'View all employees':
-        await viewAllEmployees();
-        break;
-      case 'Add a department':
-        await addDepartment();
-        break;
-      case 'Add a role':
-        await addRole();
-        break;
-      case 'Add an employee':
-        await addEmployee();
-        break;
-      case 'Update an employee role':
-        await updateEmployeeRole();
-        break;
-      case 'Exit':
-        console.log("Goodbye!");
-        await db.client.end(); // Gracefully close the database connection
-        process.exit();
+  while (!exit) {
+    try {
+      const { action } = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'action',
+          message: 'What would you like to do?',
+          choices: [
+            'View all departments',
+            'View all roles',
+            'View all employees',
+            'Add a department',
+            'Add a role',
+            'Add an employee',
+            'Update an employee role',
+            'Exit',
+          ],
+        },
+      ]);
+
+      switch (action) {
+        case 'View all departments':
+          await viewAllDepartments();
+          break;
+        case 'View all roles':
+          await viewAllRoles();
+          break;
+        case 'View all employees':
+          await viewAllEmployees();
+          break;
+        case 'Add a department':
+          await addDepartment();
+          break;
+        case 'Add a role':
+          await addRole();
+          break;
+        case 'Add an employee':
+          await addEmployee();
+          break;
+        case 'Update an employee role':
+          await updateEmployeeRole();
+          break;
+        case 'Exit':
+          console.log("Goodbye!");
+          await db.pool.end(); // Close the pool instead of the client
+          exit = true; // Set the exit flag to true to break the loop
+          break;
+      }
+    } catch (err) {
+      console.error("An error occurred:", err);
     }
-  } catch (err) {
-    console.error("An error occurred:", err);
-  } finally {
-    mainMenu(); // Re-run the menu after each action
   }
 }
 
@@ -126,7 +129,7 @@ async function addRole() {
       },
     ]);
 
-    await db.addRole(title, salary, department_id);
+    await db.addRole(title, parseFloat(salary), department_id); // Ensure salary is a number
     console.log(`Added ${title} to the database`);
   } catch (err) {
     console.error('Error adding role:', err);
