@@ -10,16 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "connect": "^3.7.0",
     "dotenv": "^16.4.5",
-    "eslint": "^9.9.1",
-    "express": "^4.19.2",
-    "handlebars": "^4.7.8",
     "inquirer": "^8.2.6",
-    "pg": "^8.12.0",
-    "prettier": "^3.3.3",
-    "sequelize": "^6.37.3",
-    "session": "^0.1.0"
+    "pg": "^8.12.0"
   }
 }
